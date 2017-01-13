@@ -38,27 +38,27 @@ public class LoginActivity extends AppCompatActivity {
         final Button loginButton = (Button) findViewById(R.id.loginbutton);
         final Button registerButton = (Button) findViewById(R.id.registerbutton);
 
-        final CheckBox AutoLoginCheck = (CheckBox) findViewById(R.id.AutoLoginCheck);
+//        final CheckBox AutoLoginCheck = (CheckBox) findViewById(R.id.AutoLoginCheck);
         /////////////////////////////
-        pref = getSharedPreferences("pref",0);
-        editor = pref.edit();
-
-        if(pref.getBoolean("checkbox",false)) {
-            idText.setText(pref.getString("userID", null));
-            passwordText.setText(pref.getString("userPassword", null));
-            loginChecked = true;
-            AutoLoginCheck.setChecked(loginChecked);
-        }
-        else {
-            String userID = idText.getText().toString();
-            String userPassword = passwordText.getText().toString();
-            loginChecked = false;
-            AutoLoginCheck.setChecked(loginChecked);
-            editor.putString("userID", userID);
-            editor.putString("userPassword", userPassword);
-            editor.putBoolean("AutoLoginCheck", loginChecked);
-
-        }
+//        pref = getSharedPreferences("pref",0);
+//        editor = pref.edit();
+//
+//        if(pref.getBoolean("checkbox",false)) {
+//            idText.setText(pref.getString("userID", null));
+//            passwordText.setText(pref.getString("userPassword", null));
+//            loginChecked = true;
+//            AutoLoginCheck.setChecked(loginChecked);
+//        }
+//        else {
+//            String userID = idText.getText().toString();
+//            String userPassword = passwordText.getText().toString();
+//            loginChecked = false;
+//            AutoLoginCheck.setChecked(loginChecked);
+//            editor.putString("userID", userID);
+//            editor.putString("userPassword", userPassword);
+//            editor.putBoolean("AutoLoginCheck", loginChecked);
+//
+//        }
             /////////////////////////////
             registerButton.setOnClickListener(new View.OnClickListener() {
                 @Override

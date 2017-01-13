@@ -68,12 +68,12 @@
                 android:orientation="vertical"
                 android:background="@color/colorPrimary"
                 android:layout_marginTop="8dp">
-            <ImageButton
-                android:layout_width="125dp"
-                android:layout_height="125dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:src = "@drawable/logo"/>
+            <!--<ImageButton-->
+                <!--android:layout_width="125dp"-->
+                <!--android:layout_height="125dp"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:src = "@drawable/logo"/>-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
