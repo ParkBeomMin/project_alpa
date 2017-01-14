@@ -1,6 +1,8 @@
 package com.example.park.management;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,12 +17,16 @@ public class StartActivity extends AppCompatActivity {
 
         ImageView logo = (ImageView) findViewById(R.id.alpalogo);
 
-        logo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
+        Handler handler = new Handler() {
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
                 Intent registerIntent = new Intent(StartActivity.this, LoginActivity.class);
                 startActivity(registerIntent);
+                finish();
             }
-        });
+        };
+        handler.sendEmptyMessageDelayed(0, 3000);
+
     }
 }

@@ -105,9 +105,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         android.app.FragmentManager manager = getFragmentManager();
 
-//        if (id == R.id.nav_announcement_layout) {
+        if (id == R.id.nav_announcement_layout) {
 //            manager.beginTransaction().replace(R.id.content_main, new AnnoucementLayout()).commit();
-//        }
+            Intent intent = new Intent(MainActivity.this, BoardmainActivity.class);
+            startActivity(intent);
+        }
         if (id == R.id.nav_board_layout) {
             manager.beginTransaction().replace(R.id.content_main, new BoardLayout()).commit();
         } else if (id == R.id.nav_gallary_layout) {
