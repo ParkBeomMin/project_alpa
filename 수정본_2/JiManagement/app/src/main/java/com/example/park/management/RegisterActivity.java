@@ -25,10 +25,6 @@ import static com.example.park.management.R.id.validatebutton;
 public class RegisterActivity extends AppCompatActivity {
     private ArrayAdapter adapter;
     private Spinner spinner;
-    private String userID;
-    private String userPassword;
-    private  String userName;
-    private  String StudentNumber;
     private AlertDialog dialog;
     private boolean validate = false;
     @Override
@@ -123,8 +119,10 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
+//                            boolean success = jsonResponse.getBoolean("success");
                             boolean success ;
-                            if(userID == "" || userPassword == "" || userPassword2 == "" || userName == "" || userStudentNumber == "") {
+
+                            if(userPassword.length() == 0 || userPassword2.length() == 0 || userName.length() == 0 ) {
                                 success = false;
                             }
                             else {
@@ -135,6 +133,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     success = false;
                                 }
                             }
+
                             if(success) {
                                 Toast.makeText(RegisterActivity.this, "회원가입 되셨습니다.", Toast.LENGTH_SHORT).show();
 //                                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
@@ -147,7 +146,7 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                             else{
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                                if(userID == "" || userPassword == "" || userPassword2 == "" || userName == "" || userStudentNumber == "") {
+                                if(userPassword.length() == 0 || userPassword2.length() == 0 || userName.length() == 0 ) {
                                     builder.setMessage("회원정보를 모두 입력해주세요.")
                                             .setNegativeButton("다시시도", null)
                                             .create()
