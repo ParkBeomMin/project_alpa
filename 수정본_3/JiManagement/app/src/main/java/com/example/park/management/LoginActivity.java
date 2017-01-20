@@ -46,14 +46,16 @@ public class LoginActivity extends AppCompatActivity {
 
         autoId = auto.getString("userId", null);
         autoPw = auto.getString("userPw", null);
-
+        autoCh = auto.getBoolean("autoLogin", false);
 //        SharedPreferences auto = getSharedPreferences("auto", LoginActivity.MODE_PRIVATE);
 
 //        autoId = auto.getString("userId", null);
 //        autoPw = auto.getString("userPW", null);
 //        autoCh = auto.getBoolean("autoLogin", false);
 
-        if(autoId != null && autoPw != null) {
+
+
+        if(autoId != null && autoPw != null && autoCh == true) {
             String userID = autoId;
             String userPassword = autoPw;
             Response.Listener<String> responesListener = new Response.Listener<String>() {
@@ -111,7 +113,12 @@ public class LoginActivity extends AppCompatActivity {
 
                                     autoLogin.putString("userId", idText.getText().toString());
                                         autoLogin.putString("userPw", passwordText.getText().toString());
+                                    if(autochecked) {
                                         autoLogin.putBoolean("autoLogin", true);
+                                    }
+                                    else {
+                                        autoLogin.putBoolean("autoLogin", false);
+                                    }
                                         autoLogin.commit();
 
 
@@ -173,8 +180,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if(isChecked) {
                     autoLogin.putBoolean("autoLogin", true);
+                    autochecked = true;
                 } else {
                     // if unChecked, removeAll
+                    autoLogin.putBoolean("autoLogin", false);
                     autochecked = false;
                     autoLogin.clear();
                     autoLogin.commit();
@@ -207,9 +216,10 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onBackPressed() {
         if(System.currentTimeMillis() - lastTimeBackPressed < 1500) {
-            finish();
+            finishAffinity();
             return;
         }
+
         Toast.makeText(this, "뒤로 버튼을 한번 더 누르면 종료됩니다", Toast.LENGTH_SHORT).show();
         lastTimeBackPressed = System.currentTimeMillis();
     }
