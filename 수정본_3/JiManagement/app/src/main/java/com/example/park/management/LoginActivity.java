@@ -26,7 +26,6 @@ public class LoginActivity extends AppCompatActivity {
     private  long lastTimeBackPressed;
     String autoId, autoPw;
     boolean autoCh;
-
     boolean autochecked;
 
     @Override
@@ -112,14 +111,14 @@ public class LoginActivity extends AppCompatActivity {
                                     SharedPreferences.Editor autoLogin = auto.edit();
 
                                     autoLogin.putString("userId", idText.getText().toString());
-                                        autoLogin.putString("userPw", passwordText.getText().toString());
+                                    autoLogin.putString("userPw", passwordText.getText().toString());
                                     if(autochecked) {
                                         autoLogin.putBoolean("autoLogin", true);
                                     }
                                     else {
                                         autoLogin.putBoolean("autoLogin", false);
                                     }
-                                        autoLogin.commit();
+                                    autoLogin.commit();
 
 
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -173,15 +172,20 @@ public class LoginActivity extends AppCompatActivity {
 //        ///////////////////////////////////////////
 //        ////////////////////////////////////////////////////////////////////////////////
         autocheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            SharedPreferences auto = getSharedPreferences("auto", Activity.MODE_PRIVATE);
-            SharedPreferences.Editor autoLogin = auto.edit();
 
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if(isChecked) {
+                    SharedPreferences auto = getSharedPreferences("auto", Activity.MODE_PRIVATE);
+                    SharedPreferences.Editor autoLogin = auto.edit();
+
                     autoLogin.putBoolean("autoLogin", true);
+                    autoLogin.commit();
                     autochecked = true;
                 } else {
+                    SharedPreferences auto = getSharedPreferences("auto", Activity.MODE_PRIVATE);
+                    SharedPreferences.Editor autoLogin = auto.edit();
+
                     // if unChecked, removeAll
                     autoLogin.putBoolean("autoLogin", false);
                     autochecked = false;
