@@ -50,7 +50,10 @@ public class BoardmainActivity extends AppCompatActivity {
 
 
     }
-
+    public void imageClick(View v){
+        Intent intent = new Intent(BoardmainActivity.this, MainActivity.class);
+        BoardmainActivity.this.startActivity(intent);
+    }
 
 
 

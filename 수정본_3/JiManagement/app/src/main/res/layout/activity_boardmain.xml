@@ -24,7 +24,8 @@
 
             app:srcCompat="@drawable/ic_apps_black_24dp"
             android:id="@+id/imageView"
-            android:background="#85C1E9" />
+            android:background="#85C1E9"
+            android:onClick="imageClick"/>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
