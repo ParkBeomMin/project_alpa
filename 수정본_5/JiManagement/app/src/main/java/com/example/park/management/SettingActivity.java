@@ -3,6 +3,7 @@ package com.example.park.management;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.media.Image;
 import android.net.Uri;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -39,6 +41,22 @@ public class SettingActivity extends Activity implements View.OnClickListener {
         mPhotoImageView = (ImageView) findViewById(R.id.user_image);
 
         mButton.setOnClickListener(this);
+
+        Button logoutButton = (Button)findViewById(R.id.logoutbutton);
+
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SettingActivity.this, LoginActivity.class);
+                SettingActivity.this.startActivity(intent);
+                SharedPreferences auto = getSharedPreferences("auto", Activity.MODE_PRIVATE);
+                SharedPreferences.Editor editor = auto.edit();
+                editor.clear();
+                editor.commit();
+                Toast.makeText(SettingActivity.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
     }
 
     /**
@@ -46,13 +64,6 @@ public class SettingActivity extends Activity implements View.OnClickListener {
      */
     private void doTakePhotoAction()
     {
-    /*
-     * 참고 해볼곳
-     * http://2009.hfoss.org/Tutorial:Camera_and_Gallery_Demo
-     * http://stackoverflow.com/questions/1050297/how-to-get-the-url-of-the-captured-image
-     * http://www.damonkohler.com/2009/02/android-recipes.html
-     * http://www.firstclown.us/tag/android/
-     */
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 

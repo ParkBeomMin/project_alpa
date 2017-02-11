@@ -74,21 +74,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        Button logoutButton = (Button)findViewById(R.id.logoutbutton);
 
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                MainActivity.this.startActivity(intent);
-                SharedPreferences auto = getSharedPreferences("auto", Activity.MODE_PRIVATE);
-                SharedPreferences.Editor editor = auto.edit();
-                editor.clear();
-                editor.commit();
-                Toast.makeText(MainActivity.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        });
 
     }
 
