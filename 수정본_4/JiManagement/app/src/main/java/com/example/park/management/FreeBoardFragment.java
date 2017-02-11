@@ -103,7 +103,7 @@ public class FreeBoardFragment extends Fragment {
         freeListView = (ListView) view.findViewById((R.id.freeListView));
         freeList = new ArrayList<Free>();
         adapter = new FreeListAdapter(getActivity(),freeList);
-        freeList.add(new Free("notice","jisung","2018-04-01"));
+
         freeListView.setAdapter(adapter);
 
         return view;
@@ -175,13 +175,14 @@ public class FreeBoardFragment extends Fragment {
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("response");
                 int count = 0;
-                String freeContent,freeName,freeDate;
+                String freeContent,freeTitle,freeName,freeDate;
                 while(count<jsonArray.length()){
                     JSONObject object = jsonArray.getJSONObject(count);
                     freeContent = object.getString("freeContent");
+                    freeTitle = object.getString("freeTitle");
                     freeName = object.getString("freeName");
                     freeDate = object.getString("freeDate");
-                    Free free = new Free(freeContent,freeName,freeDate);
+                    Free free = new Free(freeTitle,freeContent,freeName,freeDate);
                     freeList.add(free);
                     count++;
                 }

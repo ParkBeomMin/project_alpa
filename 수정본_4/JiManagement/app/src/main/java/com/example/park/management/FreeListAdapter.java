@@ -40,9 +40,11 @@ public class FreeListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = View.inflate(context, R.layout.free,null);
         TextView freeText =(TextView) v.findViewById(R.id.freeText);
+        TextView dataText = (TextView) v.findViewById(R.id.dataText);
         TextView nameText =(TextView) v.findViewById(R.id.nameText);
         TextView dateText =(TextView) v.findViewById(R.id.dateText);
         freeText.setText(freeList.get(position).getTitle());
+        dataText.setText(freeList.get(position).getData());
         nameText.setText(freeList.get(position).getName());
         dateText.setText(freeList.get(position).getDate());
         v.setTag(freeList.get(position).getTitle());
