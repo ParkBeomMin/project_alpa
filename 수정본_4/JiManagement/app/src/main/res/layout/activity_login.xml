@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#85C1E9"
+    tools:context="com.example.park.management.LoginActivity">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/idText"
+        android:hint="ID" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:layout_below="@+id/idText"
+        android:layout_alignRight="@+id/idText"
+        android:layout_alignEnd="@+id/idText"
+        android:id="@+id/passwordText"
+        android:hint="password" />
+
+    <Button
+        android:text="login"
+        android:bottomRightRadius="5dp"
+        android:bottomLeftRadius="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/passwordText"
+        android:layout_alignLeft="@+id/passwordText"
+        android:layout_alignStart="@+id/passwordText"
+        android:layout_marginTop="11dp"
+        android:id="@+id/loginbutton"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:background="#76D7C4" />
+
+    <Button
+        android:text="Register"
+        android:bottomRightRadius="5dp"
+        android:bottomLeftRadius="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/loginbutton"
+        android:layout_alignRight="@+id/passwordText"
+        android:layout_alignEnd="@+id/passwordText"
+        android:id="@+id/registerbutton"
+        android:background="#76D7C4" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/alpalogo"
+        android:id="@+id/alpalogo"
+        android:layout_alignLeft="@+id/idText"
+        android:layout_alignStart="@+id/idText"
+        android:layout_alignRight="@+id/idText"
+        android:layout_alignEnd="@+id/idText"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/loginbutton" />
+
+    <CheckBox
+        android:text="auto Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginbutton"
+        android:layout_alignLeft="@+id/loginbutton"
+        android:layout_alignStart="@+id/loginbutton"
+        android:layout_marginTop="11dp"
+        android:id="@+id/autocheckBox" />
+
+
+    <!--<CheckBox-->
+        <!--android:text="CheckBox"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/registerbutton"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--android:id="@+id/AutoLoginCheck"-->
+        <!--android:hint="AutoLogin" />-->
+</RelativeLayout>
