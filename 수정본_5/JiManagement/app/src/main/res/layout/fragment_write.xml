@@ -11,19 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:paddingRight="20dp">
-        <Spinner
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:id="@+id/boardSpinner"
-            android:spinnerMode="dialog"></Spinner>
+
 
     </LinearLayout>
+    <Spinner
+        android:layout_width="230dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/boardSpinner"
+        android:spinnerMode="dialog"></Spinner>
 
     <EditText
         android:layout_width="match_parent"
@@ -43,7 +44,10 @@
         android:gravity="top"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_weight="0.53"/>
+        android:layout_weight="0.53"
+        android:maxLength="1000"
+        android:maxHeight="80dp"
+        android:maxLines="20" />
 
     <Button
         android:text="write"
