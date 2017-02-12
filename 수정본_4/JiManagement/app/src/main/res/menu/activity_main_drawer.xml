@@ -5,12 +5,12 @@
         android:id="@+id/announcementItem0"
         android:visible="true">
         <menu >
-            <item android:title="  - 학회"
-                android:id="@+id/nav_announcement_layout" />
-            <item android:title="  - 학과"
-                android:id="@+id/nav_announcement_layout" />
             <item android:title="  - 학교"
-                android:id="@+id/nav_announcement_layout" />
+                android:id="@+id/nav_announcement_univ_layout" />
+            <item android:title="  - 학과"
+                android:id="@+id/nav_announcement_depart_layout" />
+            <item android:title="  - 학회"
+                android:id="@+id/nav_announcement_alpa_layout" />
         </menu>
     </item>
 
@@ -19,12 +19,12 @@
         android:id="@+id/boardItem0"
         android:visible="true">
         <menu >
-            <item android:title="  - Tip"
-                android:id="@+id/nav_board_layout" />
-            <item android:title="  - 요청게시판"
-                android:id="@+id/nav_board_layout" />
             <item android:title="  - 자유게시판"
-                android:id="@+id/nav_board_layout" />
+                android:id="@+id/nav_board_free_layout" />
+            <item android:title="  - 익명게시판"
+                android:id="@+id/nav_board_anony_layout" />
+            <item android:title="  - Tip"
+                android:id="@+id/nav_board_tip_layout" />
         </menu>
     </item>
 

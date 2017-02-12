@@ -132,15 +132,32 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         android.app.FragmentManager manager = getFragmentManager();
 
-        if (id == R.id.nav_announcement_layout) {
+        if (id == R.id.nav_announcement_univ_layout) {
 //            manager.beginTransaction().replace(R.id.content_main, new AnnoucementLayout()).commit();
             Intent intent = new Intent(MainActivity.this, BoardmainActivity.class);
             startActivity(intent);
         }
-        if (id == R.id.nav_board_layout) {
+        if(id == R.id.nav_announcement_depart_layout){
+            Intent intent = new Intent(MainActivity.this, BoardmainActivity.class);
+            startActivity(intent);
+            //과 프레그먼트
+        }
+        if(id == R.id.nav_announcement_alpa_layout){
+
+        }
+        if (id == R.id.nav_board_free_layout) {
             Intent intent = new Intent(MainActivity.this, UserBoardActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_gallary_layout) {
+        }
+        if (id == R.id.nav_board_anony_layout){
+            Intent intent = new Intent(MainActivity.this, UserBoardActivity.class);
+            intent.putExtra("Frag","anony");
+            startActivity(intent);
+        }
+        if (id == R.id.nav_board_tip_layout){
+
+        }
+        else if (id == R.id.nav_gallary_layout) {
             manager.beginTransaction().replace(R.id.content_main, new GallaryLayout()).commit();
         } else if (id == R.id.nav_setting_layout) {
             manager.beginTransaction().replace(R.id.content_main, new SettingLayout()).commit();

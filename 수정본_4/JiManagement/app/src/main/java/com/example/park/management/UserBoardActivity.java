@@ -25,35 +25,23 @@ import java.util.List;
 
 
 public class UserBoardActivity extends AppCompatActivity {
-/*    private ListView freeListView;
-    private FreeListAdapter adapter;
-    private List<Free> freeList;
-*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_board);
-/*
-        freeListView = (ListView) findViewById(R.id.freeListView);
-        freeList = new ArrayList<Free>();
-        freeList.add(new Free("notice","jisung","2018-04-01"));
-        freeList.add(new Free("notice","jisung","2018-04-01"));
-        freeList.add(new Free("notice","jisung","2018-04-01"));
-        freeList.add(new Free("notice","jisung","2018-04-01"));
-        adapter = new FreeListAdapter(getApplicationContext(),freeList);
-        freeListView.setAdapter(adapter);
-*/
+
+
         final Button freeButton = (Button) findViewById(R.id.freeButton);
         final Button annoButton = (Button) findViewById(R.id.annoButton);
         final Button tipButton = (Button) findViewById(R.id.tipButton);
         final Button writeButton  = (Button) findViewById(R.id.writeButton);
-        final LinearLayout notice = (LinearLayout) findViewById(R.id.notice);
+
 
         freeButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                notice.setVisibility(view.GONE);
-                freeButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                freeButton.setBackgroundColor(getResources().getColor(R.color.likeColor));
                 annoButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 tipButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 writeButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
@@ -66,9 +54,8 @@ public class UserBoardActivity extends AppCompatActivity {
         annoButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                notice.setVisibility(view.GONE);
                 freeButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                annoButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                annoButton.setBackgroundColor(getResources().getColor(R.color.likeColor));
                 tipButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 writeButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 FragmentManager fragmentManager = getSupportFragmentManager();
@@ -80,10 +67,9 @@ public class UserBoardActivity extends AppCompatActivity {
         tipButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                notice.setVisibility(view.GONE);
                 freeButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 annoButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                tipButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                tipButton.setBackgroundColor(getResources().getColor(R.color.likeColor));
                 writeButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -94,11 +80,10 @@ public class UserBoardActivity extends AppCompatActivity {
         writeButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                notice.setVisibility(view.GONE);
                 freeButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 annoButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 tipButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                writeButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                writeButton.setBackgroundColor(getResources().getColor(R.color.likeColor));
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment, new WriteFragment());
