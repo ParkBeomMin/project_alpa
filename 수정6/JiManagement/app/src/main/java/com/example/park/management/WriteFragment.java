@@ -21,7 +21,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Date;
 
 
 /**
@@ -94,26 +97,45 @@ public class WriteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_write,container,false);
-        SharedPreferences auto = getActivity().getSharedPreferences("auto", Activity.MODE_PRIVATE);
-        String userID = auto.getString("userId", "");
-
+        final String userID = getArguments().getString("userID");
         Button button = (Button) view.findViewById(R.id.pushbutton);
         final EditText Title = (EditText) view.findViewById(R.id.editTitle);
         final EditText Content = (EditText) view.findViewById(R.id.editContext);
-        final String Date = "2016-02-11";
         final Spinner spiner = (Spinner) view.findViewById(R.id.boardSpinner);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String freeTitle = Title.getText().toString();
-                String freeName = "정지성"; //change
-                String freeContent = Content.getText().toString();
-                String freeDate = Date;//change
-/*                RegisterRequest writeRequest = new writeRequest(userID,freeName,freeTitle,freeContent, freeDate, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
-                queue.add(registerRequest);
+                String boardSelect = spiner.getSelectedItem().toString();
+                String title = Title.getText().toString();
+                String content = Content.getText().toString();
+                long now = System.currentTimeMillis();
+                Date date = new Date(now);
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
 
-*/
+
+                if(boardSelect =="자유게시판"){
+                    writeRequest write = new writeRequest(userID,"jisung",title,content,date,responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(getActivity());
+                    queue.add(write);
+                }
+                else if(boardSelect == "익명게시판"){
+                  }
+                else{
+                    writeRequest write = new writeRequest(userID,"jisung",title,content,date,responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(getActivity());
+                    queue.add(write);
+                  }
+
+
             }
         });
         // Inflate the layout for this fragment

@@ -7,4 +7,9 @@
     <color name="colorGray">#8C8C8C</color>
     <color name="likeColor">#85C1E9</color>
     <color name="colorGreen">#62E4CB</color>
+    <color name="lightSalmon">#FFA07A</color>
+    <color name="red1">#CD5C5C</color>
+    <color name="blue1">#5499C7</color>
+    <color name="sliver1">#D5DBDB</color>
+    <color name="yellow1">#F5B041</color>
 </resources>

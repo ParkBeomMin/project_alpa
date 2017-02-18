@@ -2,6 +2,7 @@ package com.example.park.management;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -37,7 +38,7 @@ public class UserBoardActivity extends AppCompatActivity {
         final Button tipButton = (Button) findViewById(R.id.tipButton);
         final Button writeButton  = (Button) findViewById(R.id.writeButton);
         Intent intent = getIntent();
-        String userID = intent.getStringExtra("userID");
+        final String userID = intent.getStringExtra("userID");
 
         freeButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -48,7 +49,12 @@ public class UserBoardActivity extends AppCompatActivity {
                 writeButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment, new FreeBoardFragment());
+                Bundle args = new Bundle();
+                args.putString("userID",userID);
+                Fragment frag = new FreeBoardFragment();
+                frag.setArguments(args);
+                fragmentTransaction.replace(R.id.fragment,frag);
+
                 fragmentTransaction.commit();
             }
         });
@@ -61,7 +67,12 @@ public class UserBoardActivity extends AppCompatActivity {
                 writeButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment, new AnnoBoardFragment());
+
+                Bundle args = new Bundle();
+                args.putString("userID",userID);
+                Fragment frag = new AnnoBoardFragment();
+                frag.setArguments(args);
+                fragmentTransaction.replace(R.id.fragment,frag);
                 fragmentTransaction.commit();
             }
         });
@@ -72,9 +83,14 @@ public class UserBoardActivity extends AppCompatActivity {
                 annoButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 tipButton.setBackgroundColor(getResources().getColor(R.color.likeColor));
                 writeButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment, new TipBoardFragment());
+                Bundle args = new Bundle();
+                args.putString("userID",userID);
+                Fragment frag = new TipBoardFragment();
+                frag.setArguments(args);
+                fragmentTransaction.replace(R.id.fragment,frag);
                 fragmentTransaction.commit();
             }
         });
@@ -87,7 +103,11 @@ public class UserBoardActivity extends AppCompatActivity {
                 writeButton.setBackgroundColor(getResources().getColor(R.color.likeColor));
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment, new WriteFragment());
+                Bundle args = new Bundle();
+                args.putString("userID",userID);
+                Fragment frag = new WriteFragment();
+                frag.setArguments(args);
+                fragmentTransaction.replace(R.id.fragment,frag);
                 fragmentTransaction.commit();
             }
         });
