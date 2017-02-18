@@ -1,6 +1,8 @@
 package com.example.park.management;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -43,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.studentnumberspinner);
         adapter = ArrayAdapter.createFromResource(this, R.array.studentnumber, android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
 
         validateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +107,7 @@ public class RegisterActivity extends AppCompatActivity {
                 final String userPassword2 = password2Text.getText().toString();
                 final String userName = nameText.getText().toString();
                 final String userStudentNumber = spinner.getSelectedItem().toString();
+                final String userImage = " ";
 
                 if(!validate) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
@@ -165,7 +169,8 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }
                 };
-                RegisterRequest registerRequest = new RegisterRequest(userID, userPassword, userName, userStudentNumber, responseListener);
+
+                RegisterRequest registerRequest = new RegisterRequest(userID, userPassword, userName, userStudentNumber, userImage, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(registerRequest);
             }

@@ -5,6 +5,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Environment;
@@ -12,13 +15,16 @@ import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 
@@ -31,6 +37,8 @@ public class SettingActivity extends Activity implements View.OnClickListener {
     private ImageView mPhotoImageView;
     private Button mButton;
 
+    private String userImage;
+    private Bitmap b;
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -39,6 +47,17 @@ public class SettingActivity extends Activity implements View.OnClickListener {
 
         mButton = (Button) findViewById(R.id.selectbutton);
         mPhotoImageView = (ImageView) findViewById(R.id.user_image);
+
+        Drawable drawable = mPhotoImageView.getDrawable();
+        b = ((BitmapDrawable)drawable).getBitmap();
+        userImage = encodeToBase64(b);
+
+        SharedPreferences auto = getSharedPreferences("auto", Activity.MODE_PRIVATE);
+        String t = auto.getString("userId","")  + "님";
+
+        TextView textView = (TextView)findViewById(R.id.useridtextView);
+        textView.setText(t);
+
 
         mButton.setOnClickListener(this);
 
@@ -55,6 +74,17 @@ public class SettingActivity extends Activity implements View.OnClickListener {
                 editor.commit();
                 Toast.makeText(SettingActivity.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
                 finish();
+            }
+        });
+
+        Button saveButton = (Button)findViewById(R.id.Savebutton);
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }
@@ -183,7 +213,23 @@ public class SettingActivity extends Activity implements View.OnClickListener {
         new AlertDialog.Builder(this)
                 .setTitle("업로드할 이미지 선택")
                 .setPositiveButton("사진촬영", cameraListener)
-                .setNeutralButton("앨범선택", albumListener)
-                .setNegativeButton("취소", cancelListener)
+                .setNeutralButton("취소", cancelListener)
+                .setNegativeButton("앨범선택", albumListener)
                 .show();
-    }}
+    }
+    public static String encodeToBase64(Bitmap image) {
+        Bitmap immage = image;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        immage.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] b = baos.toByteArray();
+        String imageEncoded = Base64.encodeToString(b, Base64.DEFAULT);
+
+        Log.d("Image Log:", imageEncoded);
+        return imageEncoded;
+    }
+
+    public static Bitmap decodeToBase64(String input) {
+        byte[] decodedByte = Base64.decode(input, 0);
+        return BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
+    }
+}
