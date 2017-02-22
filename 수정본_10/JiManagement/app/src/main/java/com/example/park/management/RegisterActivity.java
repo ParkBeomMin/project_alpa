@@ -104,6 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
                 final String userPassword2 = password2Text.getText().toString();
                 final String userName = nameText.getText().toString();
                 final String userStudentNumber = spinner.getSelectedItem().toString();
+                final String userImage = "";
 
                 if(!validate) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
@@ -165,7 +166,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }
                 };
-                RegisterRequest registerRequest = new RegisterRequest(userID, userPassword, userName, userStudentNumber, responseListener);
+                RegisterRequest registerRequest = new RegisterRequest(userID, userPassword, userName, userStudentNumber, userImage, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(registerRequest);
             }
