@@ -31,8 +31,10 @@
 
         import com.android.volley.toolbox.StringRequest;
 
+        import static android.content.Context.MODE_PRIVATE;
 
-public class BoardmainActivity extends AppCompatActivity {
+
+        public class BoardmainActivity extends AppCompatActivity {
 
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -66,8 +68,22 @@ public class BoardmainActivity extends AppCompatActivity {
 
 
     public void imageClick(View v){
+        Intent info = getIntent();
+        String userID = info.getStringExtra("userID");
+        String userPassword = info.getStringExtra("userPassword");
+        String userName = info.getStringExtra("userName");
+        String userStudentNumber = info.getStringExtra("userStudentNumber");
+        String userImage = info.getStringExtra("userImage");
+
         Intent intent = new Intent(BoardmainActivity.this, MainActivity.class);
+        intent.putExtra("userPassword", userPassword);
+        intent.putExtra("userName",userName);
+        intent.putExtra("userStudentNumber",userStudentNumber);
+        intent.putExtra("userID", userID);
+        intent.putExtra("userImage", userImage);
+        intent.putExtra("Frag","alpa");
         BoardmainActivity.this.startActivity(intent);
+
     }
 
 
@@ -288,8 +304,22 @@ public class BoardmainActivity extends AppCompatActivity {
             return null;
         }
     }
-   /* public void onBackPressed() {
-        //안드로이드 백버튼 막기
+    public void onBackPressed() {
+        Intent info = getIntent();
+        String userID = info.getStringExtra("userID");
+        String userPassword = info.getStringExtra("userPassword");
+        String userName = info.getStringExtra("userName");
+        String userStudentNumber = info.getStringExtra("userStudentNumber");
+        String userImage = info.getStringExtra("userImage");
+
+        Intent intent = new Intent(BoardmainActivity.this, MainActivity.class);
+        intent.putExtra("userPassword", userPassword);
+        intent.putExtra("userName",userName);
+        intent.putExtra("userStudentNumber",userStudentNumber);
+        intent.putExtra("userID", userID);
+        intent.putExtra("userImage", userImage);
+        intent.putExtra("Frag","alpa");
+        BoardmainActivity.this.startActivity(intent);
         return;
-    }*/
+    }
 }

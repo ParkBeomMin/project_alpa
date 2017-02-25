@@ -41,8 +41,23 @@ public class GalleryActivity extends AppCompatActivity {
         });
     }
     public void imageClick(View v){
+        Intent info = getIntent();
+        String userID = info.getStringExtra("userID");
+        String userPassword = info.getStringExtra("userPassword");
+        String userName = info.getStringExtra("userName");
+        String userStudentNumber = info.getStringExtra("userStudentNumber");
+        String userImage = info.getStringExtra("userImage");
+
         Intent intent = new Intent(GalleryActivity.this, MainActivity.class);
+
+        intent.putExtra("userPassword", userPassword);
+        intent.putExtra("userName",userName);
+        intent.putExtra("userStudentNumber",userStudentNumber);
+        intent.putExtra("userID", userID);
+        intent.putExtra("userImage", userImage);
+        intent.putExtra("Frag","alpa");
         GalleryActivity.this.startActivity(intent);
+
     }
 
 

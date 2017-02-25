@@ -137,11 +137,35 @@ public class UserBoardActivity extends AppCompatActivity {
             tipButton.performClick();
     }
     public void imageClick(View v){
+        Intent info = getIntent();
+        String userID = info.getStringExtra("userID");
+        String userPassword = info.getStringExtra("userPassword");
+        String userName = info.getStringExtra("userName");
+        String userStudentNumber = info.getStringExtra("userStudentNumber");
+        String userImage = info.getStringExtra("userImage");
         Intent intent = new Intent(UserBoardActivity.this, MainActivity.class);
+        intent.putExtra("userPassword", userPassword);
+        intent.putExtra("userName",userName);
+        intent.putExtra("userStudentNumber",userStudentNumber);
+        intent.putExtra("userID", userID);
+        intent.putExtra("userImage", userImage);
+        intent.putExtra("Frag","alpa");
         UserBoardActivity.this.startActivity(intent);
     }
     public void onBackPressed() {
+        Intent info = getIntent();
+        String userID = info.getStringExtra("userID");
+        String userPassword = info.getStringExtra("userPassword");
+        String userName = info.getStringExtra("userName");
+        String userStudentNumber = info.getStringExtra("userStudentNumber");
+        String userImage = info.getStringExtra("userImage");
         Intent intent = new Intent(UserBoardActivity.this, MainActivity.class);
+        intent.putExtra("userPassword", userPassword);
+        intent.putExtra("userName",userName);
+        intent.putExtra("userStudentNumber",userStudentNumber);
+        intent.putExtra("userID", userID);
+        intent.putExtra("userImage", userImage);
+        intent.putExtra("Frag","alpa");
         UserBoardActivity.this.startActivity(intent);
         //안드로이드 백버튼 막기
         return;

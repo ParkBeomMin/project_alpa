@@ -400,9 +400,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
 
         } else if (id == R.id.nav_setting_layout) {
-            String userPassword = "";
-            String userName = "";
-            String userStudentNumber = "";
+            String userPassword = " ";
+            String userName = " ";
+            String userStudentNumber = " ";
             Response.Listener<String> responesListener = new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
