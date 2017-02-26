@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -50,12 +51,18 @@ public class SettingActivity extends Activity implements View.OnClickListener {
     private Button mButton;
     private Switch pButton;
     private Dialog dialog;
+    private TextView userName;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+
+        userName = (TextView) findViewById(R.id.userName);
+        Intent nameintent = getIntent();
+        String n = nameintent.getStringExtra("userName");
+        userName.setText(n + "님 안녕하세요!");
 
         mButton = (Button) findViewById(R.id.selectbutton);
         mPhotoImageView = (ImageView) findViewById(R.id.user_image);
@@ -179,6 +186,7 @@ public class SettingActivity extends Activity implements View.OnClickListener {
     /**
      * 카메라에서 이미지 가져오기
      */
+    /*
     private void doTakePhotoAction()
     {
 
@@ -190,10 +198,10 @@ public class SettingActivity extends Activity implements View.OnClickListener {
 
         intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, mImageCaptureUri);
         // 특정기기에서 사진을 저장못하는 문제가 있어 다음을 주석처리 합니다.
-        //intent.putExtra("return-data", true);
+//        intent.putExtra("return-data", true);
         startActivityForResult(intent, PICK_FROM_CAMERA);
     }
-
+*/
     /**
      * 앨범에서 이미지 가져오기
      */
@@ -270,14 +278,14 @@ public class SettingActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v)
     {
-        DialogInterface.OnClickListener cameraListener = new DialogInterface.OnClickListener()
+      /*  DialogInterface.OnClickListener cameraListener = new DialogInterface.OnClickListener()
         {
             @Override
-            public void onClick(DialogInterface dialog, int which)
+           public void onClick(DialogInterface dialog, int which)
             {
                 doTakePhotoAction();
             }
-        };
+        };*/
 
         DialogInterface.OnClickListener albumListener = new DialogInterface.OnClickListener()
         {
@@ -299,7 +307,7 @@ public class SettingActivity extends Activity implements View.OnClickListener {
 
         new AlertDialog.Builder(this)
                 .setTitle("업로드할 이미지 선택")
-                .setPositiveButton("사진촬영", cameraListener)
+               // .setPositiveButton("사진촬영", cameraListener)
                 .setNeutralButton("앨범선택", albumListener)
                 .setNegativeButton("취소", cancelListener)
                 .show();

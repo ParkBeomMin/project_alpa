@@ -113,10 +113,51 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tipButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, UserBoardActivity.class);
-                intent.putExtra("userID", userID);
-                intent.putExtra("Frag","tip");
-                MainActivity.this.startActivity(intent);
+                String userPassword = " ";
+                String userName = " ";
+                String userStudentNumber = " ";
+//            Log.d("info",userID + ";" + userPassword +";" + userName + ";"  );
+                Response.Listener<String> responesListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+//                    Log.d("info",userID + ";" );//+ userPassword +";" + userName + ";"  );
+                        try {
+
+                            JSONObject jsonResponse = new JSONObject(response);
+                            boolean success = jsonResponse.getBoolean("success");
+//                        if (success) {
+                            //                   String
+                            String userPassword = jsonResponse.getString("userPassword");
+                            String userName = jsonResponse.getString("userName");
+                            String userStudentNumber = jsonResponse.getString("userStudentNumber");
+                            String userImage = jsonResponse.getString("userImage");
+//                        Log.d("bem", userImage + "zzzzz");
+
+                            Log.d("info",userID + ";" + userPassword +";" + userName + ";"  + userStudentNumber + "?????" + userImage);
+                            Intent intent = new Intent(MainActivity.this, UserBoardActivity.class);
+                            intent.putExtra("userPassword", userPassword);
+                            intent.putExtra("userName",userName);
+                            intent.putExtra("userStudentNumber",userStudentNumber);
+                            intent.putExtra("userID", userID);
+                            intent.putExtra("userImage", userImage);
+                            intent.putExtra("Frag","tip");
+                            MainActivity.this.startActivity(intent);
+//                            return true;
+//                        } else {
+//                        }
+                        } catch (Exception e) {
+//                        Log.d("error","?!");
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                InfoRequest infoRequest = new InfoRequest(userID, userPassword, userName, userStudentNumber, " ", responesListener);
+                RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+                queue.add(infoRequest);
+//                Intent intent = new Intent(MainActivity.this, UserBoardActivity.class);
+//                intent.putExtra("userID", userID);
+//                intent.putExtra("Frag","tip");
+//                MainActivity.this.startActivity(intent);
 
             }
         });
@@ -165,10 +206,51 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         boardButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, UserBoardActivity.class);
-                intent.putExtra("userID", userID);
-                intent.putExtra("Frag","free");
-                MainActivity.this.startActivity(intent);
+                String userPassword = " ";
+                String userName = " ";
+                String userStudentNumber = " ";
+//            Log.d("info",userID + ";" + userPassword +";" + userName + ";"  );
+                Response.Listener<String> responesListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+//                    Log.d("info",userID + ";" );//+ userPassword +";" + userName + ";"  );
+                        try {
+
+                            JSONObject jsonResponse = new JSONObject(response);
+                            boolean success = jsonResponse.getBoolean("success");
+//                        if (success) {
+                            //                   String
+                            String userPassword = jsonResponse.getString("userPassword");
+                            String userName = jsonResponse.getString("userName");
+                            String userStudentNumber = jsonResponse.getString("userStudentNumber");
+                            String userImage = jsonResponse.getString("userImage");
+//                        Log.d("bem", userImage + "zzzzz");
+
+                            Log.d("info",userID + ";" + userPassword +";" + userName + ";"  + userStudentNumber + "?????" + userImage);
+                            Intent intent = new Intent(MainActivity.this, UserBoardActivity.class);
+                            intent.putExtra("userPassword", userPassword);
+                            intent.putExtra("userName",userName);
+                            intent.putExtra("userStudentNumber",userStudentNumber);
+                            intent.putExtra("userID", userID);
+                            intent.putExtra("userImage", userImage);
+                            intent.putExtra("Frag","free");
+                            MainActivity.this.startActivity(intent);
+//                            return true;
+//                        } else {
+//                        }
+                        } catch (Exception e) {
+//                        Log.d("error","?!");
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                InfoRequest infoRequest = new InfoRequest(userID, userPassword, userName, userStudentNumber, " ", responesListener);
+                RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+                queue.add(infoRequest);
+//                Intent intent = new Intent(MainActivity.this, UserBoardActivity.class);
+//                intent.putExtra("userID", userID);
+//                intent.putExtra("Frag","free");
+//                MainActivity.this.startActivity(intent);
             }
         });
 
@@ -278,7 +360,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             intent.putExtra("DepartURL",DepartURL);
                             intent.putExtra("AlpaURL",AlpaURL);
                             intent.putExtra("userID", userID);
-                            intent.putExtra("Frag","alpa");
+                            intent.putExtra("Frag","univ");
                             MainActivity.this.startActivity(intent);
                         } else {
                         }
@@ -317,7 +399,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             intent.putExtra("DepartURL",DepartURL);
                             intent.putExtra("AlpaURL",AlpaURL);
                             intent.putExtra("userID", userID);
-                            intent.putExtra("Frag","alpa");
+                            intent.putExtra("Frag","depart");
                             MainActivity.this.startActivity(intent);
                         } else {
                         }
@@ -376,22 +458,145 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //            startActivity(intent);
         }
         if (id == R.id.nav_board_free_layout) {
-            Intent intent = new Intent(MainActivity.this, UserBoardActivity.class);
-            intent.putExtra("userID", userID);
-            intent.putExtra("Frag","free");
-            startActivity(intent);
+            String userPassword = " ";
+            String userName = " ";
+            String userStudentNumber = " ";
+//            Log.d("info",userID + ";" + userPassword +";" + userName + ";"  );
+            Response.Listener<String> responesListener = new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+//                    Log.d("info",userID + ";" );//+ userPassword +";" + userName + ";"  );
+                    try {
+
+                        JSONObject jsonResponse = new JSONObject(response);
+                        boolean success = jsonResponse.getBoolean("success");
+//                        if (success) {
+                        //                   String
+                        String userPassword = jsonResponse.getString("userPassword");
+                        String userName = jsonResponse.getString("userName");
+                        String userStudentNumber = jsonResponse.getString("userStudentNumber");
+                        String userImage = jsonResponse.getString("userImage");
+//                        Log.d("bem", userImage + "zzzzz");
+
+                        Log.d("info",userID + ";" + userPassword +";" + userName + ";"  + userStudentNumber + "?????" + userImage);
+                        Intent intent = new Intent(MainActivity.this, UserBoardActivity.class);
+                        intent.putExtra("userPassword", userPassword);
+                        intent.putExtra("userName",userName);
+                        intent.putExtra("userStudentNumber",userStudentNumber);
+                        intent.putExtra("userID", userID);
+                        intent.putExtra("userImage", userImage);
+                        intent.putExtra("Frag","free");
+                        MainActivity.this.startActivity(intent);
+//                            return true;
+//                        } else {
+//                        }
+                    } catch (Exception e) {
+//                        Log.d("error","?!");
+                        e.printStackTrace();
+                    }
+                }
+            };
+            InfoRequest infoRequest = new InfoRequest(userID, userPassword, userName, userStudentNumber, " ", responesListener);
+            RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+            queue.add(infoRequest);
+//            Intent intent = new Intent(MainActivity.this, UserBoardActivity.class);
+//            intent.putExtra("userID", userID);
+//            intent.putExtra("Frag","free");
+//            startActivity(intent);
         }
         if (id == R.id.nav_board_anony_layout){
-            Intent intent = new Intent(MainActivity.this, UserBoardActivity.class);
-            intent.putExtra("userID", userID);
-            intent.putExtra("Frag","anony");
-            startActivity(intent);
+            String userPassword = " ";
+            String userName = " ";
+            String userStudentNumber = " ";
+//            Log.d("info",userID + ";" + userPassword +";" + userName + ";"  );
+            Response.Listener<String> responesListener = new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+//                    Log.d("info",userID + ";" );//+ userPassword +";" + userName + ";"  );
+                    try {
+
+                        JSONObject jsonResponse = new JSONObject(response);
+                        boolean success = jsonResponse.getBoolean("success");
+//                        if (success) {
+                        //                   String
+                        String userPassword = jsonResponse.getString("userPassword");
+                        String userName = jsonResponse.getString("userName");
+                        String userStudentNumber = jsonResponse.getString("userStudentNumber");
+                        String userImage = jsonResponse.getString("userImage");
+//                        Log.d("bem", userImage + "zzzzz");
+
+                        Log.d("info",userID + ";" + userPassword +";" + userName + ";"  + userStudentNumber + "?????" + userImage);
+                        Intent intent = new Intent(MainActivity.this, UserBoardActivity.class);
+                        intent.putExtra("userPassword", userPassword);
+                        intent.putExtra("userName",userName);
+                        intent.putExtra("userStudentNumber",userStudentNumber);
+                        intent.putExtra("userID", userID);
+                        intent.putExtra("userImage", userImage);
+                        intent.putExtra("Frag","anoy");
+                        MainActivity.this.startActivity(intent);
+//                            return true;
+//                        } else {
+//                        }
+                    } catch (Exception e) {
+//                        Log.d("error","?!");
+                        e.printStackTrace();
+                    }
+                }
+            };
+            InfoRequest infoRequest = new InfoRequest(userID, userPassword, userName, userStudentNumber, " ", responesListener);
+            RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+            queue.add(infoRequest);
+//            Intent intent = new Intent(MainActivity.this, UserBoardActivity.class);
+//            intent.putExtra("userID", userID);
+//            intent.putExtra("Frag","anony");
+//            startActivity(intent);
         }
         if (id == R.id.nav_board_tip_layout){
+            String userPassword = " ";
+            String userName = " ";
+            String userStudentNumber = " ";
+//            Log.d("info",userID + ";" + userPassword +";" + userName + ";"  );
+            Response.Listener<String> responesListener = new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+//                    Log.d("info",userID + ";" );//+ userPassword +";" + userName + ";"  );
+                    try {
+
+                        JSONObject jsonResponse = new JSONObject(response);
+                        boolean success = jsonResponse.getBoolean("success");
+//                        if (success) {
+                        //                   String
+                        String userPassword = jsonResponse.getString("userPassword");
+                        String userName = jsonResponse.getString("userName");
+                        String userStudentNumber = jsonResponse.getString("userStudentNumber");
+                        String userImage = jsonResponse.getString("userImage");
+//                        Log.d("bem", userImage + "zzzzz");
+
+                        Log.d("info",userID + ";" + userPassword +";" + userName + ";"  + userStudentNumber + "?????" + userImage);
+                        Intent intent = new Intent(MainActivity.this, UserBoardActivity.class);
+                        intent.putExtra("userPassword", userPassword);
+                        intent.putExtra("userName",userName);
+                        intent.putExtra("userStudentNumber",userStudentNumber);
+                        intent.putExtra("userID", userID);
+                        intent.putExtra("userImage", userImage);
+                        intent.putExtra("Frag","tip");
+                        MainActivity.this.startActivity(intent);
+//                            return true;
+//                        } else {
+//                        }
+                    } catch (Exception e) {
+//                        Log.d("error","?!");
+                        e.printStackTrace();
+                    }
+                }
+            };
+            InfoRequest infoRequest = new InfoRequest(userID, userPassword, userName, userStudentNumber, " ", responesListener);
+            RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+            queue.add(infoRequest);
             Intent intent = new Intent(MainActivity.this, UserBoardActivity.class);
-            intent.putExtra("userID", userID);
-            intent.putExtra("Frag","tip");
-            startActivity(intent);
+//            intent.putExtra("userID", userID);
+//            intent.putExtra("Frag","tip");
+//            startActivity(intent);
         }
         else if (id == R.id.nav_gallary_layout) {
             Intent intent = new Intent(MainActivity.this, GalleryActivity.class);

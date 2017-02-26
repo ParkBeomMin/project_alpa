@@ -48,4 +48,6 @@ public class Free {
     public void setDate(String date) {
         this.date = date;
     }
+
+    public  String getImage(String userImage) {return userImage;}
 }

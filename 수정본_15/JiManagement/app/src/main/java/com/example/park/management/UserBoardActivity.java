@@ -45,6 +45,7 @@ public class UserBoardActivity extends AppCompatActivity {
         SharedPreferences auto = getSharedPreferences("auto", Activity.MODE_PRIVATE);
         final String userID = auto.getString("userId", null);
         final String Frag = intent.getStringExtra("Frag");
+        final String userImage = intent.getStringExtra("userImage");
 
         SharedPreferences.Editor editBadge = auto.edit();
 
@@ -65,6 +66,7 @@ public class UserBoardActivity extends AppCompatActivity {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 Bundle args = new Bundle();
                 args.putString("userID",userID);
+                args.putString("userImage",userImage);
                 Fragment frag = new FreeBoardFragment();
                 frag.setArguments(args);
                 fragmentTransaction.replace(R.id.fragment,frag);

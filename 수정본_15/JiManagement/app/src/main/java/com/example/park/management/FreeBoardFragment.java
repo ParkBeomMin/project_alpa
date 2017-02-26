@@ -111,13 +111,14 @@ public class FreeBoardFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Free free  = (Free) parent.getItemAtPosition(position);
                 final String userID = getArguments().getString("userID");
+                final String userImage = getArguments().getString("userImage");
                 Intent intent  = new Intent(getActivity(),popupDataActivity.class);
                 intent.putExtra("title",free.getTitle());
                 intent.putExtra("data",free.getData());
                 intent.putExtra("board","free");
                 intent.putExtra("userID",userID);
                 intent.putExtra("date",free.getDate());
-                //intent.putExtra("profile",free.getprofile());
+                intent.putExtra("userImage",userImage);
                 startActivity(intent);
 
 
